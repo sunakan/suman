@@ -29,3 +29,6 @@ apply: .env
 .PHONY: destroy
 destroy: .env
 	docker-compose run --rm tf destroy
+
+test:
+	bash ./test.sh

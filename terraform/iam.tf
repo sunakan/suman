@@ -38,3 +38,21 @@ resource "aws_iam_user_group_membership" "membership" {
   user = aws_iam_user.suman_usr.name
   groups = [aws_iam_group.suman_grp.name]
 }
+
+#################################################
+# suman-qを指定したユーザ以外には何もされたくない
+#################################################
+#data "aws_iam_policy_document" "restriction" {
+#  statement {
+#    effect = "Deny"
+#    actions = ["*"]
+#    principals {
+#      type        = "AWS"
+#      identifiers = [aws_iam_user.suman_usr.arn]
+#    }
+#  }
+#}
+#resource "aws_sqs_queue_policy" "restriction" {
+#  queue_url = module.suman_q.this_sqs_queue_id
+#  policy    = data.aws_iam_policy_document.restriction.json
+#}
